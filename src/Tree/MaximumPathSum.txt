@@ -1,0 +1,16 @@
+static int res = Integer.MIN_VALUE;
+
+private int maximumPathSum(Node root){
+	if(root == null)
+		return 0;
+		
+	int left = maximumPathSum(root.left);
+	int right = maximumPathSum(root.right);
+	
+	int temp = Math.max(root.val + Math.max(left, right), root.val);
+	int tempMax = Math.max(left + right + root.val, temp);
+	res = Math.max(res, tempMax);
+	
+	return temp;	
+
+}
